@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=dvice-width, initial-scale=1.0">
+    <title>BIG5ゲーム スコア</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <h1>Big5 Game Score</h1>
+        <div class="name">
+          <p class="name-tail">自分のBig5を採点しよう！</p>
+        </div>
+        <div class="concordance element">
+          <div class="guest-action">
+            <p class="title">協調性</p>
+            <button class="rmv count-btn" id="rmv-concord" type="button" name="button" onclick="btnRmv(concord)">-</button>
+            <input class="input" id="concord-param" type="text" name="param" value="0">
+            <button class="add" id="add-concord" type="button" name="button" onclick="btnAdd(concord)">+</button>
+            <div class="questions">
+              <div class="nega-question question">
+                <p>私は、<br>批判的で<br>他人の感情に流されることはあまりない</p>
+                <div class="value">
+                  <span>全く当てはまらない：-1、あまり当てはまらない：-2，まあまあ当てはまらない：-3、やや当てはまる：-4、全く当てはまる：-5</span>
+                </div>
+              </div>
+              <div class="posi-question question">
+                <p>私は、<br>同情しやすく誰に対しても優しい人間だと思う</p>
+                <div class="value">
+                  <span>全く当てはまらない：1、あまり当てはまらない：2，まあまあ当てはまらない：3、やや当てはまる：4、全く当てはまる：5</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="externality element">
+          <div class="guest-action">
+            <p class="title">外向性</p>
+            <button class="rmv" id="rmv-external" type="button" name="button" onclick="btnRmv(external)">-</button>
+            <input class="input" id="external-param" type="text" name="param" value="0">
+            <button class="add" id="add-external" type="button" name="button" onclick="btnAdd(external)">+</button>
+            <div class="questions">
+              <div class="nega-question question">
+                <p>私は、<br>無口で、<br>もの静かな方だと思う</p>
+                <div class="value">
+                  <span>全く当てはまらない：-1、あまり当てはまらない：-2，まあまあ当てはまらない：-3、やや当てはまる：-4、全く当てはまる：-5</span>
+                </div>
+              </div>
+              <div class="posi-question question">
+                <p>私は、<br>活発で、<br>だれとでも会話を愉しむことができる</p>
+                <div class="value">
+                  <span>全く当てはまらない：1、あまり当てはまらない：2，まあまあ当てはまらない：3、やや当てはまる：4、全く当てはまる：5</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="opening element">
+            <div class="guest-action">
+            <p class="title">開放性</p>
+            <button class="rmv" id="rmv-open" type="button" name="button" onclick="btnRmv(opening)">-</button>
+            <input class="input" id="open-param" type="text" name="param" value="0">
+            <button class="add" id="add-open" type="button" name="button" onclick="btnAdd(opening)">+</button>
+            <div class="questions">
+              <div class="nega-question question">
+                <p>私は、<br>現実的に物事を考え、常識的な人間だと思う</p>
+                <div class="value">
+                  <span>全く当てはまらない：-1、あまり当てはまらない：-2，まあまあ当てはまらない：-3、やや当てはまる：-4、全く当てはまる：-5</span>
+                </div>
+              </div>
+              <div class="posi-question question">
+                <p>私は、<br>新しいことが好きで、好奇心旺盛であると思う</p>
+                <div class="value">
+                  <span>全く当てはまらない：1、あまり当てはまらない：2，まあまあ当てはまらない：3、やや当てはまる：4、全く当てはまる：5</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="honesty element">
+            <div class="guest-action">
+              <p class="title">誠実性</p>
+              <button class="rmv" id="rmv-honest" type="button" name="button" onclick="btnRmv(honesty)">-</button>
+              <input class="input" id="honest-param" type="text" name="param" value="0">
+              <button class="add"  id="add-honest" type="button" name="button" onclick="btnAdd(honesty)">+</button>
+              <div class="questions">
+                <div class="nega-question question">
+                  <p>私は、<br>だらしがなく、後先をあまり考えない人間だと思う</p>
+                  <div class="value">
+                    <span>全く当てはまらない：-1、あまり当てはまらない：-2，まあまあ当てはまらない：-3、やや当てはまる：-4、全く当てはまる：-5</span>
+                  </div>
+                </div>
+                <div class="posi-question question">
+                  <p>私は、<br>効率よく仕事をこなし、自分に厳しい人間だと思う</p>
+                  <div class="value">
+                    <span>全く当てはまらない：1、あまり当てはまらない：2，まあまあ当てはまらない：3、やや当てはまる：4、全く当てはまる：5</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="neurotic-tendency element">
+          <div class="guest-action">
+            <p class="title">神経症的傾向</p>
+            <button class="rmv" id="rmv-neurosis" type="button" name="button" onclick="btnRmv(neurosis)">-</button>
+            <input class="input" id="neurosis-param" type="text" name="param" value="0">
+            <button class="add" id="add-neurosis" type="button" name="button" onclick="btnAdd(neurosis)">+</button>
+            <div class="questions">
+              <div class="nega-question question">
+                <p>私は、<br>心配性で、不安になりやすいと思う</p>
+                <div class="value">
+                  <span>全く当てはまらない：-1、あまり当てはまらない：-2，まあまあ当てはまらない：-3、やや当てはまる：-4、全く当てはまる：-5</span>
+                </div>
+              </div>
+              <div class="posi-question question">
+                <p>私は、<br>冷静で、気分が安定していると思う</p>
+                <div class="value">
+                  <span>全く当てはまらない：1、あまり当てはまらない：2，まあまあ当てはまらない：3、やや当てはまる：4、全く当てはまる：5</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reset-btn">
+          <button type="button" name="reset" id="reset">reset</button>
+        </div>
+        <div class="setup-btn">
+          <button type="button" name="fade-in" id="setup">決定</button>
+        </div>
+      </div>
+      <div class="result-wrapper">
+        <div class="result-container">
+          <h1>私のBIG5</h1>
+          <div class="X">
+            <span class="x">×</span>
+          </div>
+          <div class="results-contents">
+            <ul class="results">
+              <li class="result"><p>協調性</p>
+                <span id="concord-result" class="result-num"></span>
+              </li>
+              <li class="result"><p>外向性</p>
+                <span id="external-result" class="result-num"></span>
+              </li>
+              <li class="result"><p>開放性</p>
+                <span id="open-result" class="result-num"></span>
+              </li>
+              <li class="result"><p>誠実性</p>
+                <span id="honest-result" class="result-num"></span>
+              </li>
+              <li class="result"><p>神経症的傾向</p>
+                <span id="neurosis-result" class="result-num"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./jquery.js">
+    </script>
+    <script src="./main.js"></script>
+  </body>
+</html>
